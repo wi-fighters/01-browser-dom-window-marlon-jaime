@@ -1,24 +1,28 @@
-const randomNumber = Math.floor(Math.random() * 10 + 1); // 1
+(()=> {
+    const randomNumber = Math.floor(Math.random() * 10 + 1); // 1
 
-console.log(`....................................${randomNumber}`);
+    console.log(`....................................${randomNumber}`);
 
-const promptForGuesses = number => {
+    const promptForGuesses = number => {
 
-    let attempts = 0; // 2
+        let attempts = 0; // 1
 
-    let userNumber = prompt("Guess a number between 1 and 10"); // 2
-
-    while(attempts < 3){
-        attempts =+ 1;
+        let userNumber = prompt("Guess a number between 1 and 10"); // 5
 
         if(parseInt(userNumber) === randomNumber) {
-            attempts = 3;
             alert(`Success! The number was ${randomNumber}`);
-        } else {
-            attempts =+ 1;
-            userNumber = prompt("Nope, sorry, try again"); // 3
-        }
-    }
-}
 
-promptForGuesses(randomNumber);
+        } else {
+            while(attempts < 3){
+                if(parseInt(userNumber) !== randomNumber){
+                userNumber = prompt("Nope, sorry, try again");
+                }
+            }
+            alert(`Sorry, you failed to guess the number in three attempts. The number was ${randomNumber}!`);
+        }
+        attempts =+ 1;
+    };
+
+
+    promptForGuesses(randomNumber);
+})();
